@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>git操作流程 | 刘晨辉的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1、mkdir &#x3D;&#x3D; 新建一个文件夹保持和仓库同名 （window 不一定能用 mkdir 命令创建，手动创建也行）  2、cd 新建的文件夹 进入这个目录    PS：ls 命令 查看当前目录有什么文件或者文件夹  3、git init 初始化  4、通过命令 git status 查看当前仓库的文件新状态。红色表示未添加到 git 仓库，绿色表示添加成功。    PS：clear 命令 可以清">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git操作流程">
+<meta property="og:url" content="http://example.com/2023/02/11/git/index.html">
+<meta property="og:site_name" content="刘晨辉的技术博客">
+<meta property="og:description" content="1、mkdir &#x3D;&#x3D; 新建一个文件夹保持和仓库同名 （window 不一定能用 mkdir 命令创建，手动创建也行）  2、cd 新建的文件夹 进入这个目录    PS：ls 命令 查看当前目录有什么文件或者文件夹  3、git init 初始化  4、通过命令 git status 查看当前仓库的文件新状态。红色表示未添加到 git 仓库，绿色表示添加成功。    PS：clear 命令 可以清">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-02-11T10:02:27.000Z">
+<meta property="article:modified_time" content="2024-02-21T06:49:29.066Z">
+<meta property="article:author" content="刘晨辉">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="刘晨辉的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘晨辉的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/11/git/" class="article-date">
+  <time class="dt-published" datetime="2023-02-11T10:02:27.000Z" itemprop="datePublished">2023-02-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      git操作流程
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><pre><code class="bash">1、mkdir == 新建一个文件夹保持和仓库同名 （window 不一定能用 mkdir 命令创建，手动创建也行）
+
+2、cd 新建的文件夹 进入这个目录
+   PS：ls 命令 查看当前目录有什么文件或者文件夹
+
+3、git init 初始化
+
+4、通过命令 git status 查看当前仓库的文件新状态。红色表示未添加到 git 仓库，绿色表示添加成功。
+   PS：clear 命令 可以清空当前的界面
+
+5、通过 git add . 【英文状态的点】 添加文件到 git 仓库。 git . 表示所有未添加的文件 
+   如果想添加单个文件 使用 git + 文件名称
+
+6、添加完成以后通过 git commit(提交) -m &quot;提交的说明&quot; 完整的命令：git commit -m &quot;添加了新文件&quot;
+
+7、把本地的仓库和远程的仓库做一次关联，让本地和远程仓库保持统一
+   git remote add origin [仓库名]
+
+8、git push origin master 把本地的文件提交到远程的分支。但是一般不要直接提交到 master 这个主分支
+
+9、新建自己的开发分支(注：每个公司都是不一样的)。然后你可以查看之前公司分支 然后确定以什么样的格式来新建 git 分支 
+   比如 dev-lch 20231208 新建分支 git branch 分支名
+
+10、切换到自己的分支上 git checkout 分支名
+
+11、创建自己的文件或做项目修改的文件 重复 git add . git commit 命令
+
+12、git pull 接到一个最新的分支 并把新的文件提交到远程
+
+13、这时候发现我新创建的分支还在本地 把新建的本地分支提交到 远程
+    命令：git push origin 分支名
+
+14、把两个分支合并一下 首先要进入到要合并的主分支 然后通过命令 git merge 分支名 进行合并
+
+15、把合并全的分支推送到远程 还是在 git pull 再 git push
+    git branch 查看当前处于哪个分支
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/11/git/" data-id="clt3ofm5x0004rsbc45ulf6kg" data-title="git操作流程" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/05/20/promise/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          promise
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/02/11/es6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">es6新特性</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/vite/" style="font-size: 10px;">vite</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/02/26/bfc/">BFC是什么</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/22/vite/">vite 配置开发环境和生产环境</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/12/scp/">Scp命令部署项目</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/react-hooks/">react常用的hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/22/vue2-vue3/">vue2和vue3的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 刘晨辉<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>刘晨辉的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="刘晨辉的技术博客">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="刘晨辉的技术博客">
+<meta property="og:locale">
+<meta property="article:author" content="刘晨辉">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="刘晨辉的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘晨辉的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-bfc" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/26/bfc/" class="article-date">
+  <time class="dt-published" datetime="2024-02-26T12:46:58.000Z" itemprop="datePublished">2024-02-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/26/bfc/">BFC是什么</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><h1>BFC(Block formatting context)就是【块级格式化上下文】</h1>
+<h2>BFC的作用</h2>
+<h4>1.解决高度坍塌</h4>
+<h4>案例：</h4>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">  &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">      div &#123;</span><br><span class="line">        display: block;</span><br><span class="line">      &#125;</span><br><span class="line">      .box &#123;</span><br><span class="line">        border: solid 1px purple;</span><br><span class="line">      &#125;</span><br><span class="line">      .<span class="built_in">float</span> &#123;</span><br><span class="line">        <span class="built_in">float</span>: left;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        background: rgb(198, 221, 208);</span><br><span class="line">        border: solid 1px black;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">&quot;float&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3>效果:</h3>
+<img src="/../images/bfc-1.png">
+解决方法:给box盒子加overflow:hidden的css属性,就解决了高度塌陷问题
+<h3>解决后效果:</h3>
+<img src="/../images/bfc-2.png">
+
+<h4>2.margin重叠</h4>
+<h4>案例：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">  &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">      .container &#123;</span><br><span class="line">        background: <span class="comment">#ccc;</span></span><br><span class="line">      &#125;</span><br><span class="line">      .sub &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        margin: 10px;</span><br><span class="line">        background: <span class="comment">#000;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;container&quot;</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">&quot;sub&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">      &lt;div class=<span class="string">&quot;sub&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">      &lt;div class=<span class="string">&quot;sub&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3>效果:</h3>
+<img src="/../images/bfc-3.png">
+<p>margin重叠,没有达到预期效果</p>
+解决方法:给每个sub盒子套一层class名为bfc盒子,加overflow:hidden的css属性,就解决了margin重叠问题
+<h3>解决后效果:</h3>
+<img src="/../images/bfc-4.png">
+<h4>3.阻止元素被浮动元素覆盖</h4>
+<h4>案例：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">  &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">      .box1 &#123;</span><br><span class="line">        background: red;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        <span class="built_in">float</span>: left;</span><br><span class="line">      &#125;</span><br><span class="line">      .box2 &#123;</span><br><span class="line">        width: 150px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: blue;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;box1&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;box2&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3>效果:</h3>
+<img src="/../images/bfc-5.png">
+<p>从上图可以看出浮动盒子(box1)覆盖了未浮动盒子(box2)</p>
+解决方法:给box2盒子加overflow:hidden的css属性,就解决了被浮动盒子覆盖效果
+<h3>解决后效果:</h3>
+<img src="/../images/bfc-6.png">
+<h2>由于BFC的隔离作用，可以利用BFC包含一个元素，防止这个元素与BFC外的元素发生margin重叠</h2>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/26/bfc/" data-id="clt3ofm5n0000rsbc16o6byth" data-title="BFC是什么" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-vite" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/22/vite/" class="article-date">
+  <time class="dt-published" datetime="2024-01-22T04:34:33.000Z" itemprop="datePublished">2024-01-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/22/vite/">vite 配置开发环境和生产环境</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.npm create vue@latest生成一个vue3的项目</span><br><span class="line"></span><br><span class="line">2.在项目的根目录里创建 .env.development 和 .dev.production文件 分别写上不同的环境变量和你想要输出的任何变量</span><br><span class="line">  在 .env.development 里</span><br><span class="line">  VITE_BASE_URL=<span class="string">&quot;http://www.development.com&quot;</span></span><br><span class="line">  在 .env.production 里</span><br><span class="line">  VITE_BASE_URL=<span class="string">&quot;http://www.production.com&quot;</span></span><br><span class="line"></span><br><span class="line">3.在vite里可以通过 import.meta.env获取当前环境里变量</span><br><span class="line">  a.在index.html里</span><br><span class="line">    i.&lt;h1&gt;当前的环境是%MODE%&lt;/h1&gt;</span><br><span class="line">    ii.&lt;p&gt;当前的baseURL是%VITE_BASE_URL%&lt;/p&gt;</span><br><span class="line">  b.axios的封装实例中</span><br><span class="line">  c.axios.cerate(&#123;baseUrl: import.meta.env.MODE == <span class="string">&#x27;development&#x27;</span> ? <span class="string">&#x27;http://www.development.com&#x27;</span>:<span class="string">&#x27;http://www.production.com&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line">4.配置自定义的打包或者压缩环境</span><br><span class="line">  配置一个测试环境</span><br><span class="line">  新建.env.test文件 写入以下内容</span><br><span class="line">  VITE_BASE_URL=<span class="string">&quot;http://www.test.com&quot;</span></span><br><span class="line"></span><br><span class="line">5.在package.josn里添加脚本命令</span><br><span class="line">  <span class="string">&quot;build:test&quot;</span>: <span class="string">&quot;vite build --mode test&quot;</span></span><br><span class="line">  这样的话就可以根据环境配置不同的url</span><br></pre></td></tr></table></figure>
+
+<p>官网<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/env-and-mode.html">https://cn.vitejs.dev/guide/env-and-mode.html</a></p>
+<p>npm run dev 或者 npm run build:test 来启动不同的环境</p>
+<p>环境文件的命名格式： .dev.[环境的名称] ex: .env.staging 预发环境的配置</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/22/vite/" data-id="clt3ofm62000frsbc7o9w1pci" data-title="vite 配置开发环境和生产环境" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vite/" rel="tag">vite</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-scp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/12/scp/" class="article-date">
+  <time class="dt-published" datetime="2024-01-12T05:54:14.000Z" itemprop="datePublished">2024-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/12/scp/">Scp命令部署项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一、将文件上传到服务器上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.scp [文件名]  [服务器用户名]@[服务的地址]:[文件路径]</span><br><span class="line">b.scp  d:/2104B/map.jpg  root@192.168.88.88:/www/2104B</span><br><span class="line">会要求你输入服务器密码  密码正确则开始上传</span><br></pre></td></tr></table></figure>
+
+<p>二、将文件夹上到服务器上 可在 scp 命令之后 加 [-r ] 表示要递归上传</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.scp -r [文件名]  [服务器用户名]@[服务的地址]:[文件路径]</span><br><span class="line">b.scp  d:/2104B/big_screen  root@192.168.88.88:/www/2104B</span><br><span class="line">c.scp -r --exclude=<span class="string">&#x27;目录名&#x27;</span> 源文件/目录 目标主机:目标路径</span><br></pre></td></tr></table></figure>
+
+<p>三、在 linux 服务器安装 node</p>
+<p>a.下载 node 并解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v18.9.0/node-v18.9.0-linux-x64.tar.xz<span class="comment"># 下载</span></span><br><span class="line">tar xf node-v18.9.0-linux-x64.tar.xz <span class="comment"># 解压</span></span><br><span class="line"><span class="built_in">cd</span> node-v18.9.0-linux-x64.tar.xz  <span class="comment"># 进入解压目录</span></span><br></pre></td></tr></table></figure>
+
+<p>b.配置环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile  <span class="comment">#编辑这个文件</span></span><br><span class="line">在末尾添加： <span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/[你下安装目录]/node/node-v18.9.0-linux-x64/bin</span><br><span class="line"><span class="built_in">source</span> /etc/profile <span class="comment"># 刷新配置文件 让配置文件生效</span></span><br></pre></td></tr></table></figure>
+
+<p>c.验证</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">正常会出来node的版本号</span><br></pre></td></tr></table></figure>
+
+<p>d.如果出错 如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">node: /lib64/libm.so.6: version `GLIBC_2.27<span class="string">&#x27; not found (required by node)</span></span><br><span class="line"><span class="string">node: /lib64/libc.so.6: version `GLIBC_2.25&#x27;</span> not found (required by node)</span><br><span class="line">node: /lib64/libc.so.6: version `GLIBC_2.28<span class="string">&#x27; not found (required by node)</span></span><br><span class="line"><span class="string">node: /lib64/libstdc++.so.6: version `CXXABI_1.3.9&#x27;</span> not found (required by node)</span><br><span class="line">node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.20<span class="string">&#x27; not found (required by node)</span></span><br><span class="line"><span class="string">node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&#x27;</span> not found (required by node)</span><br></pre></td></tr></table></figure>
+
+<p>解决方式 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/dingshaohua/p/17103654.html">https://www.cnblogs.com/dingshaohua/p/17103654.html</a></p>
+<p>如果以上方法安装node环境不行的话试试这个<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hongyi66/p/17296786.html">https://www.cnblogs.com/hongyi66/p/17296786.html</a></p>
+<p>四、在package srripts里配置打包命令 简化上传流程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>:&#123;</span><br><span class="line">    <span class="string">&quot;dev&quot;</span>:<span class="string">&quot;vite&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build&quot;</span>:<span class="string">&quot;vite build&quot;</span>,</span><br><span class="line">    <span class="string">&quot;preview&quot;</span>:<span class="string">&quot;vite preview&quot;</span>,</span><br><span class="line">    <span class="string">&quot;push&quot;</span>:<span class="string">&quot;vite build &amp;&amp; scp -r ../vue3 root@192.168.88.88:/www/2104B&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后npm push 上传到linux服务器上</p>
+<p>五、nginx<br>    安装方式：<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15311571/5858248">https://blog.51cto.com/u_15311571/5858248</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/12/scp/" data-id="clt3ofm61000crsbc5jo0c5a3" data-title="Scp命令部署项目" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-react-hooks" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/react-hooks/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T06:03:46.000Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/16/react-hooks/">react常用的hooks</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">useState：用于在函数组件中添加状态管理能力。</span><br><span class="line">useEffect：用于在函数组件中执行副作用操作，比如数据获取、订阅或手动 DOM 操作。</span><br><span class="line">useContext：用于在函数组件中访问 React 上下文。</span><br><span class="line">useReducer：类似于 Redux 中的 reducer，用于在函数组件中管理复杂的状态逻辑。</span><br><span class="line">useCallback：用于在函数组件中缓存回调函数，以避免不必要的重新渲染。</span><br><span class="line">useMemo：类似于 useCallback，用于在函数组件中进行性能优化，缓存计算结果。</span><br><span class="line">useRef：用于在函数组件中创建可变的 ref 对象。</span><br><span class="line">useImperativeHandle：用于在函数组件中自定义对外暴露的实例值。</span><br><span class="line">useLayoutEffect：类似于 useEffect，但在浏览器执行绘制之前同步触发效果。</span><br><span class="line">useDebugValue：用于在自定义 hooks 中显示调试信息。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/09/16/react-hooks/" data-id="clt3ofm60000brsbchdyc697p" data-title="react常用的hooks" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-vue2-vue3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/22/vue2-vue3/" class="article-date">
+  <time class="dt-published" datetime="2023-08-22T10:50:07.000Z" itemprop="datePublished">2023-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/22/vue2-vue3/">vue2和vue3的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><h3>性能优化：</h3>
+Vue 3引入了更好的虚拟DOM算法（Fragment:碎片化节点 Patching减少不必要的开销，提升性能），使得更新速度更快。
+Vue 3使用了Proxy代替Object.defineProperty来实现响应式数据，提高了性能。
+Tree-shaking支持有助于减小打包体积(将没有使用的模块代码移除掉，这样来达到删除无用代码的目的。)。
+
+<h3>Composition API：</h3>
+Vue 3引入了Composition API，使得代码组织更加灵活和可复用，尤其适用于大型项目。
+Composition API可以更好地组织逻辑和状态，避免了Vue 2中逻辑难以维护的问题。
+
+<h3>Typescript支持：</h3>
+Vue 3对Typescript的支持更加友好，提供了更好的类型推断和类型检查。
+
+<h3>响应式系统：</h3>
+Vue 3 引入了 Proxy 来替代 Object.defineProperty 实现响应式，提供了 Composition API、setup 函数等新特性，优化了响应式数据缓存机制，使得开发体验更好，性能更高效。
+
+<h3>编译优化：</h3>
+Vue 3 在编译优化方面引入了静态树提升、事件侦听器缓存等新特性，生成的代码更精简、包体积更小、性能更高，相比 Vue 2 有明显提升。
+
+<h3 id="-1"><a href="#-1" class="headerlink" title></a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/22/vue2-vue3/" data-id="clt3ofm63000hrsbc6o578bxp" data-title="vue2和vue3的区别" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/vite/" style="font-size: 10px;">vite</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/02/26/bfc/">BFC是什么</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/22/vite/">vite 配置开发环境和生产环境</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/12/scp/">Scp命令部署项目</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/react-hooks/">react常用的hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/22/vue2-vue3/">vue2和vue3的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 刘晨辉<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

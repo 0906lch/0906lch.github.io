@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>刘晨辉的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="刘晨辉的技术博客">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="刘晨辉的技术博客">
+<meta property="og:locale">
+<meta property="article:author" content="刘晨辉">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="刘晨辉的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘晨辉的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-getFn" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/22/getFn/" class="article-date">
+  <time class="dt-published" datetime="2023-08-22T05:34:23.000Z" itemprop="datePublished">2023-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/22/getFn/">get函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><h3>一、react 实现 get() 函数的示例 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻</h3>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import React from <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> get(obj, chain, defaultVal) &#123;</span><br><span class="line">  // 将链式属性路径拆分成数组</span><br><span class="line">  const keys = chain.split(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  // 初始化结果为传入的对象</span><br><span class="line">  <span class="built_in">let</span> result = obj;</span><br><span class="line"></span><br><span class="line">  // 遍历属性路径数组，并逐层获取属性值</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; keys.length; i++) &#123;</span><br><span class="line">    // 如果当前属性值为 undefined，则返回默认值</span><br><span class="line">    <span class="keyword">if</span> (result[keys[i]] === undefined) &#123;</span><br><span class="line">      <span class="built_in">return</span> defaultVal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 否则，将结果更新为当前属性值</span><br><span class="line">    result = result[keys[i]];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 返回最终结果</span><br><span class="line">  <span class="built_in">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">GetExample</span></span>() &#123;</span><br><span class="line">  const data = &#123;</span><br><span class="line">    name: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">    age: 30,</span><br><span class="line">    address: &#123;</span><br><span class="line">      city: <span class="string">&#x27;New York&#x27;</span>,</span><br><span class="line">      country: <span class="string">&#x27;USA&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  // 测试 get 函数</span><br><span class="line">  const name = get(data, <span class="string">&#x27;name&#x27;</span>); // <span class="string">&#x27;John&#x27;</span></span><br><span class="line">  const city = get(data, <span class="string">&#x27;address.city&#x27;</span>); // <span class="string">&#x27;New York&#x27;</span></span><br><span class="line">  const zip = get(data, <span class="string">&#x27;address.zip&#x27;</span>, <span class="string">&#x27;N/A&#x27;</span>); // <span class="string">&#x27;N/A&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;get() 函数示例&lt;/h1&gt;</span><br><span class="line">      &lt;p&gt;Name: &#123;name&#125;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;City: &#123;city&#125;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;Zip: &#123;zip&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default GetExample;</span><br></pre></td></tr></table></figure>
+
+<h3>二、vue2 实现 get() 函数的示例 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻</h3>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line">// 在 main.js 中注册全局函数</span><br><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Vue.prototype.<span class="variable">$get</span> = <span class="keyword">function</span>(obj, chain, defaultVal) &#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    const value = chain.split(<span class="string">&#x27;.&#x27;</span>).reduce((acc, key) =&gt; acc[key], obj);</span><br><span class="line">    return value !== undefined ? value : defaultVal;</span><br><span class="line">  &#125; catch (e) &#123;</span><br><span class="line">    return defaultVal;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 在组件中使用 <span class="variable">$get</span> 函数</span><br><span class="line">export default &#123;</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    const obj = &#123;</span><br><span class="line">      a: &#123;</span><br><span class="line">        b: &#123;</span><br><span class="line">          c: &#x27;Hello World&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    const value = this.<span class="variable">$get</span>(obj, &#x27;a.b.c&#x27;, &#x27;Default Value&#x27;);</span><br><span class="line">    console.log(value); // 输出 &#x27;Hello World&#x27;</span><br><span class="line"></span><br><span class="line">    const nonExistentValue = this.<span class="variable">$get</span>(obj, &#x27;x.y.z&#x27;, &#x27;Default Value&#x27;);</span><br><span class="line">    console.log(nonExistentValue); // 输出 &#x27;Default Value&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3>三、vue3 实现 get() 函数的示例 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;button @click=<span class="string">&quot;getValue&quot;</span>&gt;Get Value&lt;/button&gt;</span><br><span class="line">    &lt;p&gt;Result: &#123;&#123; result &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref, onMounted &#125; from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">    const getValue = () =&gt; &#123;</span><br><span class="line">      const obj = &#123;</span><br><span class="line">        a: &#123;</span><br><span class="line">          b: &#123;</span><br><span class="line">            c: <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">      const value = get(obj, <span class="string">&#x27;a.b.c&#x27;</span>, <span class="string">&#x27;Default Value&#x27;</span>);</span><br><span class="line">      console.log(value); // 输出 <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    const result = ref(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    const get = (obj, chain, defaultVal) =&gt; &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        const value = chain.split(<span class="string">&#x27;.&#x27;</span>).reduce((acc, key) =&gt; acc[key], obj);</span><br><span class="line">        return value !== undefined ? value : defaultVal;</span><br><span class="line">      &#125; catch (e) &#123;</span><br><span class="line">        return defaultVal;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    onMounted(() =&gt; &#123;</span><br><span class="line">      getValue();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      result</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/22/getFn/" data-id="clt3ofm5w0003rsbc7mwt89na" data-title="get函数" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-loopOutput" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/20/loopOutput/" class="article-date">
+  <time class="dt-published" datetime="2023-08-20T11:52:25.000Z" itemprop="datePublished">2023-08-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/20/loopOutput/">解决循环输出问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>案例:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i = 1; i &lt;= 5; i ++)&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    console.log(i)</span><br><span class="line">  &#125;, 0)</span><br><span class="line">&#125; // 输出结果：6 6 6 6 6</span><br></pre></td></tr></table></figure>
+
+<p>如何实现打印结果为 1，2，3，4，5 呢？<br>1、setTimeout 为宏任务，由于 JS 中单线程 eventLoop 机制，在主线程同步任务执行完后才去执行宏任务，因此循环结束后 setTimeout 中的回调才依次执行<br>2、因为 setTimeout 函数也是一种闭包，往上找它的父级作用域链就是 window，变量 i 为 window 上的全局变量，开始执行 setTimeout 之前变量 i 已经就是 6 了，因此最后输出的连续就都是 6。</p>
+<p>解决方法一：IIFE 立即执行函数<br>利用 IIFE（立即执行函数），当每次 for 循环时，把此时的变量 i 传递到定时器中，然后执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i = 1;i &lt;= 5;i++)&#123;</span><br><span class="line">  (<span class="keyword">function</span>(j)&#123;</span><br><span class="line">    setTimeout(<span class="keyword">function</span> <span class="function"><span class="title">timer</span></span>()&#123;</span><br><span class="line">      console.log(j)</span><br><span class="line">    &#125;, 0)</span><br><span class="line">  &#125;)(i)</span><br><span class="line">&#125; // 输出结果：1 2 3 4 5</span><br></pre></td></tr></table></figure>
+
+<p>解决方法二：使用 ES6 中的 let<br>ES6 中新增的 let 定义变量的方式，使得 ES6 之后 JS 发生革命性的变化，让 JS 有了块级作用域，代码的作用域以块级为单位进行执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 1; i &lt;= 5; i++)&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">  &#125;,0)</span><br><span class="line">&#125; // 输出结果：1 2 3 4 5</span><br></pre></td></tr></table></figure>
+
+<p>解决方法三：定时器传入第三个参数<br>setTimeout 作为经常使用的定时器，它是存在第三个参数的,日常工作中我们经常使用的一般是前两个，一个是回调函数，另外一个是时间，而第三个参数用得比较少。而第三个参数的传递，可以改变 setTimeout 的执行逻辑，从而实现我们想要的结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i=1;i&lt;=5;i++)&#123;</span><br><span class="line">  setTimeout(<span class="keyword">function</span>(j) &#123;</span><br><span class="line">    console.log(j)</span><br><span class="line">  &#125;, 0, i)</span><br><span class="line">&#125; // 输出结果：1 2 3 4 5</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/20/loopOutput/" data-id="clt3ofm5z0008rsbceyk7dvpj" data-title="解决循环输出问题" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-promise" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/20/promise/" class="article-date">
+  <time class="dt-published" datetime="2023-05-20T03:12:51.000Z" itemprop="datePublished">2023-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/05/20/promise/">promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><p>Promise 是 ES6 新增的语法，解决了回调地狱的问题。</p>
+<p>一般 Promise 在执行过程中，必然会处于以下几种状态之一。<br>· 待定（pending）：初始状态，既没有被完成，也没有被拒绝。<br>· 已完成（fulfilled）：操作成功完成。<br>· 已拒绝（rejected）：操作失败。</p>
+<p>实例：then catch finally<br>静态：all race resolve reject<br>· resolve：将其他数据类型转为 Promise 并将状态改为成功态<br>· reject：将其他数据类型转为 Promise 并将状态改为失败态<br>· all：参数所有返回结果为成功才返回<br>· allSettled: 参数不论返回结果是否成功，都返回每个参数执行状态<br>· any: 参数中只要有一个成功，就返回该成功的执行结果<br>· race：参数数组中所有 Promise 实例中最快的那个成功即为成功态，失败即为失败态<br>案例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line">const PENDING = <span class="string">&#x27;pending&#x27;</span>  // 声明一个常量PENDING，表示Promise的初始状态</span><br><span class="line">const FULFILLED = <span class="string">&#x27;fulfilled&#x27;</span>  // 声明一个常量FULFILLED，表示Promise的成功状态</span><br><span class="line">const REJECTED = <span class="string">&#x27;rejected&#x27;</span>  // 声明一个常量REJECTED，表示Promise的失败状态</span><br><span class="line"></span><br><span class="line">class MyPromise &#123;</span><br><span class="line">  constructor(executor) &#123;</span><br><span class="line">    this.state = PENDING  // 初始化Promise的状态为PENDING</span><br><span class="line">    this.value = undefined  // 初始化Promise的值为undefined</span><br><span class="line">    this.reason = undefined  // 初始化Promise的失败原因为undefined</span><br><span class="line">    this.onFulfilledCallbacks = []  // 存储Promise成功状态下的回调函数</span><br><span class="line">    this.onRejectedCallbacks = []  // 存储Promise失败状态下的回调函数</span><br><span class="line"></span><br><span class="line">    // 定义resolve函数，用于将Promise状态改为FULFILLED，并执行成功状态下的回调函数</span><br><span class="line">    const resolve = (value) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (this.state = PENDING) &#123;</span><br><span class="line">        this.state = FULFILLED  // 将Promise状态改为FULFILLED</span><br><span class="line">        this.value = value  // 存储Promise成功时的值</span><br><span class="line">        this.onFulfilledCallbacks.forEach(fn =&gt; fn())  // 执行所有成功状态下的回调函数</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 定义reject函数，用于将Promise状态改为REJECTED，并执行失败状态下的回调函数</span><br><span class="line">    const reject = (reason) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (this.state === PENDING) &#123;</span><br><span class="line">        this.state = REJECTED  // 将Promise状态改为REJECTED</span><br><span class="line">        this.reason = reason  // 存储Promise失败时的原因</span><br><span class="line">        this.onRejectedCallbacks.forEach(fn =&gt; fn())  // 执行所有失败状态下的回调函数</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">      executor(resolve, reject)  // 执行executor函数，并传入resolve和reject参数</span><br><span class="line">    &#125; catch (err) &#123;</span><br><span class="line">      reject(err)  // 捕获错误，并将Promise状态改为REJECTED</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 静态方法resolve，返回一个状态为FULFILLED的Promise实例</span><br><span class="line">  static resolve(value) &#123;</span><br><span class="line">    <span class="built_in">return</span> new MyPromise((resolve, reject) =&gt; &#123;</span><br><span class="line">      resolve(value)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 静态方法reject，返回一个状态为REJECTED的Promise实例</span><br><span class="line">  static reject(reason) &#123;</span><br><span class="line">    return new MyPromise((resolve, reject) =&gt; &#123;</span><br><span class="line">      reject(reason)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 静态方法all，接收一个包含多个Promise实例的数组，返回一个新的Promise实例</span><br><span class="line">  static all(promises) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">      if (promises.length === <span class="number">0</span>) &#123;</span><br><span class="line">        resolve([])  // 如果传入的数组为空，则直接返回一个状态为FULFILLED的Promise实例</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        let result = []  // 存储每个Promise实例的执行结果</span><br><span class="line">        let count = <span class="number">0</span> // 计数器</span><br><span class="line">        for (let i = <span class="number">0</span>;i &lt; promises.length; i++) &#123;</span><br><span class="line">          promises[i].then(</span><br><span class="line">            data =&gt; &#123;</span><br><span class="line">              result[i] = data  // 将每个Promise实例的执行结果存入result数组中</span><br><span class="line">              count++</span><br><span class="line">              if (count === promises.length) &#123;</span><br><span class="line">                resolve(result)  // 当所有Promise实例都执行完毕时，返回包含所有结果的新的Promise实例</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            err =&gt; &#123;</span><br><span class="line">              // 如果其中一个Promise实例执行失败，则将新的Promise实例的状态改为REJECTED，并返回失败原因</span><br><span class="line">              reject(err)</span><br><span class="line">              return</span><br><span class="line">            &#125;</span><br><span class="line">          )</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 静态方法race，接收一个包含多个Promise实例的数组，返回一个新的Promise实例</span><br><span class="line">  static race(promises) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">      if (promises.length === <span class="number">0</span>) &#123;</span><br><span class="line">        resolve()  // 如果传入的数组为空，则直接返回一个状态为FULFILLED的Promise实例</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        for (let i = <span class="number">0</span>; i &lt; promises.length; i++) &#123;</span><br><span class="line">          promises[i].then(</span><br><span class="line">            data =&gt; &#123;</span><br><span class="line">              resolve(data)  // 返回第一个执行完毕的Promise实例的结果</span><br><span class="line">            &#125;,</span><br><span class="line">            (err) =&gt; &#123;</span><br><span class="line">              // 如果其中一个Promise实例执行失败，则将新的Promise实例的状态改为REJECTED，并返回失败原因</span><br><span class="line">              reject(err)  </span><br><span class="line">              return</span><br><span class="line">            &#125;</span><br><span class="line">          )</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // then方法，用于在Promise的成功和失败状态下执行回调函数，返回一个新的Promise实例</span><br><span class="line">  then(onFulfilled, onRejected) &#123;</span><br><span class="line">    // 如果onFulfilled不是一个函数，则将其更改为返回接收到的值的函数</span><br><span class="line">    if (typeof onFulfilled !== &#x27;function&#x27;) &#123;</span><br><span class="line">      onFulfilled = function (value) &#123;</span><br><span class="line">        return value</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 如果onRejected不是一个函数，则将其更改为抛出接收到的原因的函数</span><br><span class="line">    if (typeof onRejected !== &#x27;function&#x27;) &#123;</span><br><span class="line">      onRejected = function (reason) &#123;</span><br><span class="line">        throw reason</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let promise2 = new MyPromise((resolve, reject) =&gt; &#123;</span><br><span class="line">      switch (this.state) &#123;</span><br><span class="line">        // 如果Promise当前的状态是PENDING，则将回调函数添加到对应的回调数组中</span><br><span class="line">        case PENDING:</span><br><span class="line">          this.onFulfilledCallbacks.push(() =&gt; &#123;</span><br><span class="line">            setTimeout(() =&gt; &#123;</span><br><span class="line">              try &#123;</span><br><span class="line">                const value = onFulfilled(this.value)</span><br><span class="line">                if (value instanceof MyPromise) &#123;</span><br><span class="line">                  value.then(resolve, reject)</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                  resolve(value)</span><br><span class="line">                &#125;</span><br><span class="line">              &#125; catch (err) &#123;</span><br><span class="line">                reject(err)</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;, <span class="number">0</span>)</span><br><span class="line">          &#125;)</span><br><span class="line">          this.onRejectedCallbacks.push(() =&gt; &#123;</span><br><span class="line">            setTimeout(() =&gt; &#123;</span><br><span class="line">              try &#123;</span><br><span class="line">                const value = onRejected(this.reason)</span><br><span class="line">                resolve(value)</span><br><span class="line">              &#125; catch (err) &#123;</span><br><span class="line">                reject(err)</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;, <span class="number">0</span>)</span><br><span class="line">          &#125;)</span><br><span class="line">          break</span><br><span class="line">        // 如果Promise当前的状态是FULFILLED，则直接执行成功回调函数</span><br><span class="line">        case FULFILLED:</span><br><span class="line">          setTimeout(() =&gt; &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">              const value = onFulfilled(this.value)</span><br><span class="line">              resolve(value)</span><br><span class="line">            &#125; catch (err) &#123;</span><br><span class="line">              reject(err)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;, <span class="number">0</span>)</span><br><span class="line">          break</span><br><span class="line">        // 如果Promise当前的状态是REJECTED，则直接执行失败回调函数</span><br><span class="line">        case REJECTED:</span><br><span class="line">          setTimeout(() =&gt; &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">              const value = onRejected(this.reason)</span><br><span class="line">              resolve(value)</span><br><span class="line">            &#125; catch (err) &#123;</span><br><span class="line">              reject(err)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;, <span class="number">0</span>)</span><br><span class="line">          break</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    return promise2</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // catch方法，用于捕获Promise的失败状态，并执行回调函数</span><br><span class="line">  catch(onRejected) &#123;</span><br><span class="line">    return this.then(null, onRejected)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // finally方法，无论Promise状态是成功还是失败，都会执行回调函数</span><br><span class="line">  finally(fn) &#123;</span><br><span class="line">    return this.then(</span><br><span class="line">      (value) =&gt; &#123;</span><br><span class="line">        fn()</span><br><span class="line">        return value</span><br><span class="line">      &#125;,</span><br><span class="line">      (reason) =&gt; &#123;</span><br><span class="line">        fn()</span><br><span class="line">        throw reason</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/20/promise/" data-id="clt3ofm600009rsbc0r983jen" data-title="promise" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/11/git/" class="article-date">
+  <time class="dt-published" datetime="2023-02-11T10:02:27.000Z" itemprop="datePublished">2023-02-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/11/git/">git操作流程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><pre><code class="bash">1、mkdir == 新建一个文件夹保持和仓库同名 （window 不一定能用 mkdir 命令创建，手动创建也行）
+
+2、cd 新建的文件夹 进入这个目录
+   PS：ls 命令 查看当前目录有什么文件或者文件夹
+
+3、git init 初始化
+
+4、通过命令 git status 查看当前仓库的文件新状态。红色表示未添加到 git 仓库，绿色表示添加成功。
+   PS：clear 命令 可以清空当前的界面
+
+5、通过 git add . 【英文状态的点】 添加文件到 git 仓库。 git . 表示所有未添加的文件 
+   如果想添加单个文件 使用 git + 文件名称
+
+6、添加完成以后通过 git commit(提交) -m &quot;提交的说明&quot; 完整的命令：git commit -m &quot;添加了新文件&quot;
+
+7、把本地的仓库和远程的仓库做一次关联，让本地和远程仓库保持统一
+   git remote add origin [仓库名]
+
+8、git push origin master 把本地的文件提交到远程的分支。但是一般不要直接提交到 master 这个主分支
+
+9、新建自己的开发分支(注：每个公司都是不一样的)。然后你可以查看之前公司分支 然后确定以什么样的格式来新建 git 分支 
+   比如 dev-lch 20231208 新建分支 git branch 分支名
+
+10、切换到自己的分支上 git checkout 分支名
+
+11、创建自己的文件或做项目修改的文件 重复 git add . git commit 命令
+
+12、git pull 接到一个最新的分支 并把新的文件提交到远程
+
+13、这时候发现我新创建的分支还在本地 把新建的本地分支提交到 远程
+    命令：git push origin 分支名
+
+14、把两个分支合并一下 首先要进入到要合并的主分支 然后通过命令 git merge 分支名 进行合并
+
+15、把合并全的分支推送到远程 还是在 git pull 再 git push
+    git branch 查看当前处于哪个分支
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/11/git/" data-id="clt3ofm5x0004rsbc45ulf6kg" data-title="git操作流程" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-es6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/11/es6/" class="article-date">
+  <time class="dt-published" datetime="2023-02-11T02:44:10.000Z" itemprop="datePublished">2023-02-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/11/es6/">es6新特性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><pre><code class="bash">1、let const (var和let还有const的区别，let和const的区别，const的详细用法)
+   var 词法作用域(变量的意义和值完全根据上下文来定，而且会提升)
+   let const 是块作用域(左右花括弧&#123;&#125;括起来的是块作用域)
+   内存管理 栈 堆
+2、内置对象的扩展：startsWith endsWith find flat
+3、新增数据类型：6种数据类型
+   string boolean number undefined null object
+   symbol(相当于id，唯一值)
+   biginter(大数)
+4、新增语法糖：结构赋值 扩展操作符 class for-of循环
+5、generator函数，控制异步流程
+6、原生支持了promise
+7、对象代理
+8、迭代器 为了使用for of 和扩展操作符更好的去遍历处理数据
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/11/es6/" data-id="clt3ofm5t0001rsbc1k9w9wqj" data-title="es6新特性" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/vite/" style="font-size: 10px;">vite</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/02/26/bfc/">BFC是什么</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/22/vite/">vite 配置开发环境和生产环境</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/12/scp/">Scp命令部署项目</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/react-hooks/">react常用的hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/22/vue2-vue3/">vue2和vue3的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 刘晨辉<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

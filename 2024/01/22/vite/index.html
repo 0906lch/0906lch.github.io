@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>vite 配置开发环境和生产环境 | 刘晨辉的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="12345678910111213141516171819202122231.npm create vue@latest生成一个vue3的项目2.在项目的根目录里创建 .env.development 和 .dev.production文件 分别写上不同的环境变量和你想要输出的任何变量  在 .env.development 里  VITE_BASE_URL&#x3D;&quot;http:&#x2F;&#x2F;www.de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vite 配置开发环境和生产环境">
+<meta property="og:url" content="http://example.com/2024/01/22/vite/index.html">
+<meta property="og:site_name" content="刘晨辉的技术博客">
+<meta property="og:description" content="12345678910111213141516171819202122231.npm create vue@latest生成一个vue3的项目2.在项目的根目录里创建 .env.development 和 .dev.production文件 分别写上不同的环境变量和你想要输出的任何变量  在 .env.development 里  VITE_BASE_URL&#x3D;&quot;http:&#x2F;&#x2F;www.de">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-01-22T04:34:33.000Z">
+<meta property="article:modified_time" content="2024-02-21T06:31:54.824Z">
+<meta property="article:author" content="刘晨辉">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="vite">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="刘晨辉的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘晨辉的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-vite" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/22/vite/" class="article-date">
+  <time class="dt-published" datetime="2024-01-22T04:34:33.000Z" itemprop="datePublished">2024-01-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      vite 配置开发环境和生产环境
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.npm create vue@latest生成一个vue3的项目</span><br><span class="line"></span><br><span class="line">2.在项目的根目录里创建 .env.development 和 .dev.production文件 分别写上不同的环境变量和你想要输出的任何变量</span><br><span class="line">  在 .env.development 里</span><br><span class="line">  VITE_BASE_URL=<span class="string">&quot;http://www.development.com&quot;</span></span><br><span class="line">  在 .env.production 里</span><br><span class="line">  VITE_BASE_URL=<span class="string">&quot;http://www.production.com&quot;</span></span><br><span class="line"></span><br><span class="line">3.在vite里可以通过 import.meta.env获取当前环境里变量</span><br><span class="line">  a.在index.html里</span><br><span class="line">    i.&lt;h1&gt;当前的环境是%MODE%&lt;/h1&gt;</span><br><span class="line">    ii.&lt;p&gt;当前的baseURL是%VITE_BASE_URL%&lt;/p&gt;</span><br><span class="line">  b.axios的封装实例中</span><br><span class="line">  c.axios.cerate(&#123;baseUrl: import.meta.env.MODE == <span class="string">&#x27;development&#x27;</span> ? <span class="string">&#x27;http://www.development.com&#x27;</span>:<span class="string">&#x27;http://www.production.com&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line">4.配置自定义的打包或者压缩环境</span><br><span class="line">  配置一个测试环境</span><br><span class="line">  新建.env.test文件 写入以下内容</span><br><span class="line">  VITE_BASE_URL=<span class="string">&quot;http://www.test.com&quot;</span></span><br><span class="line"></span><br><span class="line">5.在package.josn里添加脚本命令</span><br><span class="line">  <span class="string">&quot;build:test&quot;</span>: <span class="string">&quot;vite build --mode test&quot;</span></span><br><span class="line">  这样的话就可以根据环境配置不同的url</span><br></pre></td></tr></table></figure>
+
+<p>官网<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/env-and-mode.html">https://cn.vitejs.dev/guide/env-and-mode.html</a></p>
+<p>npm run dev 或者 npm run build:test 来启动不同的环境</p>
+<p>环境文件的命名格式： .dev.[环境的名称] ex: .env.staging 预发环境的配置</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/22/vite/" data-id="clt3ofm62000frsbc7o9w1pci" data-title="vite 配置开发环境和生产环境" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vite/" rel="tag">vite</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/02/26/bfc/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          BFC是什么
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/01/12/scp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Scp命令部署项目</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/vite/" style="font-size: 10px;">vite</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/02/26/bfc/">BFC是什么</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/22/vite/">vite 配置开发环境和生产环境</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/12/scp/">Scp命令部署项目</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/react-hooks/">react常用的hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/22/vue2-vue3/">vue2和vue3的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 刘晨辉<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

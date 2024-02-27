@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>get函数 | 刘晨辉的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、react 实现 get() 函数的示例 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import React from &#x27;react&#x27;;function get(obj, chain,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="get函数">
+<meta property="og:url" content="http://example.com/2023/08/22/getFn/index.html">
+<meta property="og:site_name" content="刘晨辉的技术博客">
+<meta property="og:description" content="一、react 实现 get() 函数的示例 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import React from &#x27;react&#x27;;function get(obj, chain,">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-08-22T05:34:23.000Z">
+<meta property="article:modified_time" content="2024-02-21T10:40:36.458Z">
+<meta property="article:author" content="刘晨辉">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="刘晨辉的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘晨辉的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-getFn" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/22/getFn/" class="article-date">
+  <time class="dt-published" datetime="2023-08-22T05:34:23.000Z" itemprop="datePublished">2023-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      get函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><h3>一、react 实现 get() 函数的示例 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻</h3>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import React from <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> get(obj, chain, defaultVal) &#123;</span><br><span class="line">  // 将链式属性路径拆分成数组</span><br><span class="line">  const keys = chain.split(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  // 初始化结果为传入的对象</span><br><span class="line">  <span class="built_in">let</span> result = obj;</span><br><span class="line"></span><br><span class="line">  // 遍历属性路径数组，并逐层获取属性值</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; keys.length; i++) &#123;</span><br><span class="line">    // 如果当前属性值为 undefined，则返回默认值</span><br><span class="line">    <span class="keyword">if</span> (result[keys[i]] === undefined) &#123;</span><br><span class="line">      <span class="built_in">return</span> defaultVal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 否则，将结果更新为当前属性值</span><br><span class="line">    result = result[keys[i]];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 返回最终结果</span><br><span class="line">  <span class="built_in">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">GetExample</span></span>() &#123;</span><br><span class="line">  const data = &#123;</span><br><span class="line">    name: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">    age: 30,</span><br><span class="line">    address: &#123;</span><br><span class="line">      city: <span class="string">&#x27;New York&#x27;</span>,</span><br><span class="line">      country: <span class="string">&#x27;USA&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  // 测试 get 函数</span><br><span class="line">  const name = get(data, <span class="string">&#x27;name&#x27;</span>); // <span class="string">&#x27;John&#x27;</span></span><br><span class="line">  const city = get(data, <span class="string">&#x27;address.city&#x27;</span>); // <span class="string">&#x27;New York&#x27;</span></span><br><span class="line">  const zip = get(data, <span class="string">&#x27;address.zip&#x27;</span>, <span class="string">&#x27;N/A&#x27;</span>); // <span class="string">&#x27;N/A&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;get() 函数示例&lt;/h1&gt;</span><br><span class="line">      &lt;p&gt;Name: &#123;name&#125;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;City: &#123;city&#125;&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;Zip: &#123;zip&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default GetExample;</span><br></pre></td></tr></table></figure>
+
+<h3>二、vue2 实现 get() 函数的示例 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻</h3>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line">// 在 main.js 中注册全局函数</span><br><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Vue.prototype.<span class="variable">$get</span> = <span class="keyword">function</span>(obj, chain, defaultVal) &#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    const value = chain.split(<span class="string">&#x27;.&#x27;</span>).reduce((acc, key) =&gt; acc[key], obj);</span><br><span class="line">    return value !== undefined ? value : defaultVal;</span><br><span class="line">  &#125; catch (e) &#123;</span><br><span class="line">    return defaultVal;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 在组件中使用 <span class="variable">$get</span> 函数</span><br><span class="line">export default &#123;</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    const obj = &#123;</span><br><span class="line">      a: &#123;</span><br><span class="line">        b: &#123;</span><br><span class="line">          c: &#x27;Hello World&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    const value = this.<span class="variable">$get</span>(obj, &#x27;a.b.c&#x27;, &#x27;Default Value&#x27;);</span><br><span class="line">    console.log(value); // 输出 &#x27;Hello World&#x27;</span><br><span class="line"></span><br><span class="line">    const nonExistentValue = this.<span class="variable">$get</span>(obj, &#x27;x.y.z&#x27;, &#x27;Default Value&#x27;);</span><br><span class="line">    console.log(nonExistentValue); // 输出 &#x27;Default Value&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3>三、vue3 实现 get() 函数的示例 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;button @click=<span class="string">&quot;getValue&quot;</span>&gt;Get Value&lt;/button&gt;</span><br><span class="line">    &lt;p&gt;Result: &#123;&#123; result &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref, onMounted &#125; from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">    const getValue = () =&gt; &#123;</span><br><span class="line">      const obj = &#123;</span><br><span class="line">        a: &#123;</span><br><span class="line">          b: &#123;</span><br><span class="line">            c: <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">      const value = get(obj, <span class="string">&#x27;a.b.c&#x27;</span>, <span class="string">&#x27;Default Value&#x27;</span>);</span><br><span class="line">      console.log(value); // 输出 <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    const result = ref(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    const get = (obj, chain, defaultVal) =&gt; &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        const value = chain.split(<span class="string">&#x27;.&#x27;</span>).reduce((acc, key) =&gt; acc[key], obj);</span><br><span class="line">        return value !== undefined ? value : defaultVal;</span><br><span class="line">      &#125; catch (e) &#123;</span><br><span class="line">        return defaultVal;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    onMounted(() =&gt; &#123;</span><br><span class="line">      getValue();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      result</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/22/getFn/" data-id="clt3ofm5w0003rsbc7mwt89na" data-title="get函数" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/22/vue2-vue3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          vue2和vue3的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/20/loopOutput/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">解决循环输出问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/vite/" style="font-size: 10px;">vite</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/02/26/bfc/">BFC是什么</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/22/vite/">vite 配置开发环境和生产环境</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/12/scp/">Scp命令部署项目</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/react-hooks/">react常用的hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/22/vue2-vue3/">vue2和vue3的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 刘晨辉<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
